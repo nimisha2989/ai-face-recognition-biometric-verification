@@ -55,3 +55,78 @@ The biometric recognition pipeline follows the workflow below:
 
 7. **Optimization and Model Fusion**  
    PCA is used for dimensionality reduction, and ResNet18 scores are fused with MobileNetV2 scores to evaluate multi-model biometric performance.
+
+
+## Results and Key Findings
+
+The system was evaluated across subject-dependent verification, face identification, subject-independent generalization, dimensionality reduction, and multi-model score fusion.
+
+| Experiment | Result | Key Observation |
+|---|---|---|
+| Subject-Dependent Verification | ROC AUC: 0.9995 | Strong separation between genuine and impostor scores |
+| Verification Score Separation | d-prime: 8.83 | Highly discriminative facial embeddings |
+| Rank-1 Identification | 98% | Correct identity retrieved as the top match in most cases |
+| Rank-3 Identification | 98% | Correct identity appeared within the top three matches |
+| Subject-Independent Verification | ROC AUC: 0.8986 | Unseen identities presented a more challenging generalization scenario |
+| PCA Dimensionality Reduction | 512 → 128 dimensions | Retained approximately 99.4% of the original variance |
+| PCA Verification | ROC AUC: 0.9969 | Strong verification performance maintained after compression |
+| Multi-Model Score Fusion | ROC AUC: 0.99888 | ResNet18 and MobileNetV2 score fusion provided robust verification performance |
+
+### Key Findings
+
+- Transfer learning with ResNet18 produced highly discriminative facial embeddings even with a limited face dataset.
+- Subject-dependent verification achieved strong genuine and impostor score separation.
+- Subject-independent testing demonstrated the increased difficulty of biometric recognition on unseen identities.
+- PCA reduced embedding dimensionality by 75% while maintaining strong verification performance.
+- Score-level fusion combined complementary similarity information from ResNet18 and MobileNetV2.
+
+  ## Technologies Used
+
+- Python
+- PyTorch
+- Torchvision
+- ResNet18
+- MobileNetV2
+- Scikit-learn
+- NumPy
+- Matplotlib
+- Google Colab
+- Jupyter Notebook
+
+## Machine Learning and AI Techniques
+
+- Deep Learning
+- Convolutional Neural Networks (CNNs)
+- Transfer Learning
+- Deep Feature Embeddings
+- Cosine Similarity
+- Biometric Verification
+- Face Identification
+- Principal Component Analysis (PCA)
+- Score-Level Fusion
+- ROC and AUC Analysis
+- Equal Error Rate (EER)
+- Cumulative Match Characteristic (CMC) Analysis
+
+  ## How to Run the Project
+
+1. Download or clone this repository.
+2. Open `face_recognition_biometric_verification.ipynb` in Google Colab or Jupyter Notebook.
+3. Download the Georgia Tech Cropped Face Database.
+4. Upload the dataset ZIP file when prompted by the notebook.
+5. Run the notebook cells sequentially to:
+   - Extract and inspect the dataset.
+   - Prepare training and testing samples.
+   - Fine-tune the ResNet18 model.
+   - Extract deep facial embeddings.
+   - Evaluate face verification and identification performance.
+   - Perform subject-independent evaluation.
+   - Apply PCA dimensionality reduction.
+   - Train MobileNetV2 and evaluate score-level fusion.
+
+## Project Author
+
+**Nimisha Chandra**
+
+Master's in Electrical and Computer Engineering  
+AI/ML-focused technical and project professional
