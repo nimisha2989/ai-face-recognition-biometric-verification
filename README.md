@@ -28,3 +28,30 @@ The project evaluates model performance in both subject-dependent and subject-in
 - Implemented **score-level fusion using ResNet18 and MobileNetV2**.
 - Evaluated performance using **ROC-AUC, Equal Error Rate (EER), TAR@FAR, and Rank-1 Accuracy**.
 - Tested generalization using **unseen identities**.
+
+
+## System Architecture
+
+The biometric recognition pipeline follows the workflow below:
+
+1. **Face Image Input**  
+   Facial images are loaded from the Georgia Tech Face Database.
+
+2. **Image Preprocessing**  
+   Images are resized and normalized using ImageNet preprocessing parameters.
+
+3. **Deep Feature Extraction**  
+   A fine-tuned ResNet18 model extracts a 512-dimensional embedding representing facial characteristics.
+
+4. **Embedding Comparison**  
+   Cosine similarity is used to measure similarity between facial embeddings.
+
+5. **Biometric Decision**
+   - **Verification:** Determines whether two images belong to the same identity.
+   - **Identification:** Compares a probe image against a gallery of enrolled identities.
+
+6. **Performance Evaluation**  
+   The system is evaluated using ROC-AUC, Equal Error Rate (EER), TAR@FAR, and Rank-based identification accuracy.
+
+7. **Optimization and Model Fusion**  
+   PCA is used for dimensionality reduction, and ResNet18 scores are fused with MobileNetV2 scores to evaluate multi-model biometric performance.
